@@ -2,7 +2,7 @@
 
 ## Git Commands
 
-1. `git remote -v` - проверить к какjму репозиторию привязан проэкт
+1. `git remote -v` - проверить к какoму репозиторию привязан проэкт
 1. `git remote set-url origin ........` - change url repository
 1. `git clone` - копіює репозиторій(папку з файлами) на компютер
 1. `git branch` "branchName" - створює гілку з назвою "branchName"
