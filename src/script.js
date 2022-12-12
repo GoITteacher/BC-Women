@@ -2,7 +2,7 @@
 Написати систему контролю банку.
 
 Властивості:
-- список користувачів [userId, FIO,'password']
+- список користувачів [userId, login, password]
 - список рахунків [userId, accountNumber, value]
 
 Методи:
@@ -24,29 +24,120 @@
 
 const bank = {
   users: [],
-  account: [],
+  accounts: [],
 
-  addUser(login, password) {},
+  addUser(login, password) {
+    const user = {
+      userId: randomID(),
+      login,
+      password,
+    };
+    this.users.push(user);
+    this.createAccount(user.userId);
+  },
 
   deleteUser(id) {},
 
-  createAccount(id) {},
+  createAccount(id) {
+    const userAccount = {
+      userID: id,
+      accountNumber: randomID(),
+      value: 0,
+    };
+    this.accounts.push(userAccount);
+  },
 
   deleteAccount(id) {},
 
   deleteAccountForUser(id) {},
 
-  deposit(amount, id) {},
+  deposit(amount, id) {
+    if (amount < 0) return;
+    for (const account of this.accounts) {
+      if (account.accountNumber === id) {
+        account.value += amount;
+      }
+    }
+  },
 
   withdraw(amount, id) {},
 
   getBalance(id) {},
 
-  getTotalBalance(userId) {},
+  getTotalBalance(userId) {
+    let total = 0;
+    for (const account of this.accounts) {
+      if (account.userID === userId) {
+        total += account.value;
+      }
+    }
+
+    return total;
+  },
 
   getUserWithSmallBalance(min) {},
 
-  getVipUsers(max) {},
+  getVipUsers1() {
+    let max = 0;
+    let vipUser;
+    for (const user of this.users) {
+      const total = this.getTotalBalance(user.userId);
+      if (total > max) {
+        max = total;
+        vipUser = user;
+      }
+    }
+    return vipUser;
+  },
+
+  getVipUsers2(max) {
+    const filteredUsers = [];
+
+    for (const user of this.users) {
+      if (this.getTotalBalance(user.userId) > max) {
+        filteredUsers.push(user);
+      }
+    }
+
+    return filteredUsers;
+  },
+
+  getVipUsers() {
+    const COUNT_USERS = 3;
+
+    let max = 0;
+    for (const user of this.users) {
+      const total = this.getTotalBalance(user);
+      if (total > max) {
+        max = total;
+      }
+    }
+
+    let max1 = 0;
+    for (const user of this.users) {
+      const total = this.getTotalBalance(user);
+      if (total > max1 && total < max) {
+        max1 = total;
+      }
+    }
+
+    let max2 = 0;
+    for (const user of this.users) {
+      const total = this.getTotalBalance(user);
+      if (total > max2 && total < max1) {
+        max2 = total;
+      }
+    }
+
+    const filteredArray = [];
+
+    for (const user of this.users) {
+      const total = this.getTotalBalance(user);
+      if (total > max2) filteredArray.push(user);
+    }
+
+    return filteredArray;
+  },
 };
 
 let randomID = () => {
@@ -58,16 +149,16 @@ let randomID = () => {
 // =======================
 
 bank.addUser('1', '1');
-const accountId = bank.account[0].accountId;
+const accountId = bank.accounts[0].accountNumber;
 const userId = bank.users[0].userId;
 
+bank.deposit(5000, accountId);
+bank.deposit(2000, accountId);
 bank.deposit(1000, accountId);
-bank.deposit(1000, accountId);
-bank.deposit(1000, accountId);
-bank.withdraw(700, accountId);
-bank.createAccount(userId);
+// bank.withdraw(700, accountId);
+// bank.createAccount(userId);
 
-bank.deleteUser(userId);
+// bank.deleteUser(userId);
 
 console.log(bank.users);
-console.log(bank.account);
+console.log(bank.accounts);
