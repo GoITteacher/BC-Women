@@ -5,16 +5,6 @@
 //   { name: 'Щебень', price: 200, quantity: 2 },
 // ];
 
-// function calcTotalPrice(stones, stoneName) {
-//   for (let i = 0; i < stones.length; i++) {
-//     if (stones[i].name === stoneName) {
-//       return stones[i].price * stones[i].quantity;
-//     }
-//   }
-
-//   return null;
-// }
-
 // const res = calcTotalPrice(stones, 'Сапфир');
 
 // console.log(res);
