@@ -3,16 +3,21 @@
 /* Перепиши функцию так, чтобы она принимала один объект параметров, вместо набора
 независимых аргументов. */
 
-// function calcBMI(weight, height) {}
+function calcBMI({ weight, height }) {
+  // let { weight, height } = obj;
+  weight = Number(weight.replace(',', '.'));
+  height = Number(height.replace(',', '.'));
+  return +(weight / height ** 2).toFixed(2);
+}
 
 // console.log(calcBMI('88,3', '1.75'));
 
-// const obj = {
-//   weight: '88,3',
-//   height: '1.75',
-// };
+const obj = {
+  weight: '88.3',
+  height: '1,75',
+};
 
-// console.log(calcBMI(obj.weight, obj.height));
+// console.log(calcBMI(obj));
 
 // =======================
 
@@ -121,21 +126,42 @@ console.log(
 const user = {
   firstname: 'Петрик',
   lastname: 'Пяточкин',
+  login: 123,
+  password: 'sefse',
 };
 
+function transformUsername(user) {
+  const { firstname, lastname, ...args } = user;
+  const newUser = {
+    fullName: `${firstname} ${lastname}`,
+    ...args,
+  };
+
+  console.log(newUser);
+}
+transformUsername(user);
 // =======================
 
 // Напишите функцию, которая возвращает вложенный массив вида [[key, value], [key, value]]
 
-/* 
+// const user = {
+//   name: 'Mango',
+//   email: 'mango@mail.com',
+//   list: 'friends',
+//   key: '123',
+// };
 
-const user = {
-  name: 'Mango',
-  email: 'mango@mail.com',
-  list: 'friends',
-};
+// function foo(obj) {
+//   let array = [];
+//   for (const key of Object.keys(obj)) {
+//     array.push([key, obj[key]]);
+//   }
+//   console.log(array);
+// }
 
-console.log(doubleArray(user)); */
+// foo(user);
+
+// console.log(doubleArray(user));
 // ==================================
 
 /* 
