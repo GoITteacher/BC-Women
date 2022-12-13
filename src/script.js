@@ -36,7 +36,15 @@ const bank = {
     this.createAccount(user.userId);
   },
 
-  deleteUser(id) {},
+  deleteUser(id) {
+    for (let i = 0; i < this.users.length; i += 1) {
+      if (this.users[i].userId === id) {
+        this.users.splice(i, 1);
+        break;
+      }
+    }
+    this.deleteAccountForUser(id);
+  },
 
   createAccount(id) {
     const userAccount = {
@@ -47,9 +55,22 @@ const bank = {
     this.accounts.push(userAccount);
   },
 
-  deleteAccount(id) {},
+  deleteAccount(id) {
+    for (let i = 0; i < this.accounts.length; i++) {
+      if (this.accounts[i].accountNumber === id) {
+        return this.accounts.splice(i, 1);
+      }
+    }
+  },
 
-  deleteAccountForUser(id) {},
+  deleteAccountForUser(id) {
+    for (let i = 0; i < this.accounts.length; i++) {
+      if (this.accounts[i].userID === id) {
+        this.accounts.splice(i, 1);
+        i -= 1;
+      }
+    }
+  },
 
   deposit(amount, id) {
     if (amount < 0) return;
@@ -60,9 +81,23 @@ const bank = {
     }
   },
 
-  withdraw(amount, id) {},
+  withdraw(amount, id) {
+    if (amount < 0) return;
 
-  getBalance(id) {},
+    for (const account of this.accounts) {
+      if (account.accountNumber === id && amount <= account.value) {
+        return (account.value -= amount);
+      }
+    }
+  },
+
+  getBalance(id) {
+    for (const account of this.accounts) {
+      if (account.accountNumber === id) {
+        return account.value;
+      }
+    }
+  },
 
   getTotalBalance(userId) {
     let total = 0;
@@ -75,7 +110,18 @@ const bank = {
     return total;
   },
 
-  getUserWithSmallBalance(min) {},
+  getUserWithSmallBalance() {
+    let min = Infinity; // min = this.accounts[0].value
+    let vipUser;
+    for (const user of this.users) {
+      const total = this.getTotalBalance(user.userId);
+      if (total < min) {
+        min = total;
+        vipUser = user;
+      }
+    }
+    return vipUser;
+  },
 
   getVipUsers1() {
     let max = 0;
