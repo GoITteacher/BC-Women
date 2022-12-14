@@ -1,0 +1,52 @@
+/* 
+Добавьте объекту account методы withdraw(amount, onSuccess, onError) и deposit(amount, onSuccess, onError), где первый параметр это сумма операции, а второй и третий - колбеки.
+
+Метод withdraw вызывает onError если amount больше TRANSACTION_LIMIT или this.balance, и onSuccess в противном случае.
+
+Метод deposit вызывает onError если amount больше TRANSACTION_LIMIT или меньше либо равен нулю, и onSuccess в противном случае.
+*/
+
+const TRANSACTION_LIMIT = 1000;
+
+const account = {
+  username: 'Jacob',
+  balance: 5000,
+  withdraw(amount, onSuccess, onError) {
+    if (amount > this.balance) {
+      onError(`withdraw: Balance less amount`);
+    } else if (amount < 0) {
+      onError(`withdraw: Amount < 0`);
+    } else if (amount >= TRANSACTION_LIMIT) {
+      onError(`withdraw: Amount > TRANSACTION LIMIT`);
+    } else {
+      this.balance -= amount;
+      onSuccess(`withdraw: Your balance: ${this.balance}`);
+    }
+  },
+
+  deposit(amount, onSuccess, onError) {
+    if (amount < 0) {
+      onError(`deposit: Amount < 0`);
+    } else if (amount >= TRANSACTION_LIMIT) {
+      onError(`deposit: Amount > TRANS`);
+    } else {
+      this.balance += amount;
+      onSuccess(`deposit: Your balance: ${this.balance}`);
+    }
+  },
+};
+
+function handleSuccess(message) {
+  console.log(`✅ Success! ${message}`);
+}
+function handleError(message) {
+  console.log(`❌ Error! ${message}`);
+}
+
+account.withdraw(2000, handleSuccess, handleError);
+account.withdraw(600, handleSuccess, handleError);
+account.withdraw(300, handleSuccess, handleError);
+account.deposit(1700, handleSuccess, handleError);
+account.deposit(0, handleSuccess, handleError);
+account.deposit(-600, handleSuccess, handleError);
+account.deposit(600, handleSuccess, handleError);

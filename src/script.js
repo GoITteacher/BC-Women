@@ -1,92 +1,5 @@
-// ==========================
-
-/* 
-
-createProduct(obj, callback) - принимает объект товара без id, а также колбек. Функция создаёт обьект товара, добавляя ему уникальный идентификатор в свойство id и вызывает колбек передавая ему созданный обьект.
-
-logProduct(product) - коллбек принимающий обьект продукта и логирующий его в консоль
-
-logTotalPrice(product) - коллбек принимающий обьект продукта и логирующий общую стоимость товара в консоль
-*/
-
-// function createProduct(obj, callback) {
-//   let objCopy = { id: randomId(), ...obj };
-//   callback(objCopy);
-// }
-
-// function logProduct(product) {
-//   console.log(product);
-// }
-
-// function logTotalPrice(product) {
-//   console.log(`Ім'я: ${product.name} - ${product.price * product.quantity}`);
-// }
-
-// createProduct({ name: '🍎', price: 30, quantity: 3 }, logProduct);
-// createProduct({ name: '🍋', price: 20, quantity: 5 }, logTotalPrice);
-
-// =====================
-
-/* 
-Добавьте объекту account методы withdraw(amount, onSuccess, onError) и deposit(amount, onSuccess, onError), где первый параметр это сумма операции, а второй и третий - колбеки.
-
-Метод withdraw вызывает onError если amount больше TRANSACTION_LIMIT или this.balance, и onSuccess в противном случае.
-
-Метод deposit вызывает onError если amount больше TRANSACTION_LIMIT или меньше либо равен нулю, и onSuccess в противном случае.
-*/
-
-/* const TRANSACTION_LIMIT = 1000;
-
-const account = {
-  username: 'Jacob',
-  balance: 400,
-
-  withdraw(amount, onSuccess, onError) {
-    if (amount > TRANSACTION_LIMIT || amount > this.balance) {
-      onError('Amount less than limit or balance');
-    } else {
-      this.balance -= amount;
-      onSuccess(`Withdraw ok, your balance is ${this.balance}`);
-    }
-  },
-
-  deposit(amount, onSuccess, onError) {
-    if (amount > TRANSACTION_LIMIT || amount <= 0) {
-      onError('Amount more tant limit or less than 0');
-    } else {
-      this.balance += amount;
-      onSuccess(`Deposit ok, your balance is ${this.balance}`);
-    }
-  },
-};
-
-function handleSuccess(message) {
-  console.log(`✅ Success! ${message}`);
-}
-function handleError(message) {
-  console.log(`❌ Error! ${message}`);
-}
-
-account.withdraw(2000, handleSuccess, handleError);
-account.withdraw(600, handleSuccess, handleError);
-account.withdraw(300, handleSuccess, handleError);
-account.deposit(1700, handleSuccess, handleError);
-account.deposit(0, handleSuccess, handleError);
-account.deposit(-600, handleSuccess, handleError);
-account.deposit(600, handleSuccess, handleError); */
-
 // ============================
 /* Напишите функцию each(array, callback), которая первым параметром ожидает массив, а вторым - функцию, которая применится к каждому элементу массива. Функция each должна вернуть новый массив, элементами которого будут результаты вызова коллбека. */
-
-// function each(array, callback) {
-//   let resultArr = [];
-
-//   array.forEach((elem)=>{
-//     resultArr.push(callback(elem));
-//   });
-
-//   return resultArr;
-// }
 
 // console.log(
 //   each([64, 49, 36, 25, 16], function (value) {
@@ -137,26 +50,7 @@ account.deposit(600, handleSuccess, handleError); */
 // const account = {
 //   username: 'Jacob',
 //   balance: 400,
-//   withdraw: (amount, onSuccess, onError) => {
-//     if (amount > TRANSACTION_LIMIT) {
-//       onError(`Amount should not exceed ${TRANSACTION_LIMIT} credits`);
-//     } else if (amount > this.balance) {
-//       onError(`Amount can't exceed account balance of ${this.balance} credits`);
-//     } else {
-//       this.balance -= amount;
-//       onSuccess(`Account balance: ${this.balance}`);
-//     }
-//   },
-//   deposit: (amount, onSuccess, onError) => {
-//     if (amount > TRANSACTION_LIMIT) {
-//       onError(`Amount should not exceed ${TRANSACTION_LIMIT} credits`);
-//     } else if (amount <= 0) {
-//       onError(`Amount must be more than 0 credits`);
-//     } else {
-//       this.balance += amount;
-//       onSuccess(`Account balance: ${this.balance}`);
-//     }
-//   },
+//
 // };
 
 // const handleSuccess = message => {
@@ -175,14 +69,6 @@ account.deposit(600, handleSuccess, handleError); */
 // account.deposit(600, handleSuccess, handleError);
 // ============================
 
-// const each = (array, callback) => {
-//   const newArr = [];
-//   for (const el of array) {
-//     newArr.push(callback(el));
-//   }
-//   return newArr;
-// };
-
 // console.log(each([64, 49, 36, 25, 16], value => value * 2));
 // console.log(each([64, 49, 36, 25, 16], value => value - 10));
 // console.log(each([64, 49, 36, 25, 16], value => Math.sqrt(value)));
@@ -191,24 +77,10 @@ account.deposit(600, handleSuccess, handleError); */
 
 // ============================
 
-// const logItems = items => {
-//   console.log(items);
-//   items.forEach((elem, index) => console.log(`${index + 1} - ${elem}`));
-// };
-
 // logItems(['Mango', 'Poly', 'Ajax']);
 // logItems(['🍎', '🍇', '🍑', '🍌', '🍋']);
 
 // ============================
-
-// function printContactsInfo({ names, phones }) {
-//   const nameList = names.split(',');
-//   const phoneList = phones.split(',');
-
-//   nameList.forEach(index => {
-//     console.log(`${element}: ${phoneList[index]}`);
-//   });
-// }
 
 // printContactsInfo({
 //   names: 'Jacob,William,Solomon,Artemis',
@@ -217,40 +89,14 @@ account.deposit(600, handleSuccess, handleError); */
 
 // ============================
 
-// function calсulateAverage(...args) {
-//   let total = 0;
-
-//   args.forEach((el, index, array) => {
-//     total += el;
-//   });
-
-//   return total / args.length;
-// }
-
 // console.log(calсulateAverage(1, 2, 3, 4)); // 2.5
 // console.log(calсulateAverage(14, 8, 2)); // 8
 // console.log(calсulateAverage(27, 43, 2, 8, 36)); // 23.2
 
 // ============================
 
-/* function oddOne(arr) {
-  let res = -1;
-  arr.forEach((el, i, arr) => {
-    if (el % 2 !== 0) {
-      res = i;
-    }
-  });
-  return res;
-}
+/* 
 
-function oddOne(arr) {
-  for(let i = 0; i < arr.length; i++){
-    if(arr[i] % 2 !== 0){
-      return i;
-    }
-  }
-  return -1;
-}
 
 oddOne([4, -8, 98, -12, -7, 90, 100]); // => 4 */
 
@@ -277,16 +123,7 @@ oddOne([4, -8, 98, -12, -7, 90, 100]); // => 4 */
  */
 
 // function arrange(s) {
-//   const T = [];
-
-//   for (let i = 0; i < s.length / 2; i++) {
-//     if (i % 2 === 0) {
-//       T.push(s[i], s[s.length - 1 - i]);
-//     } else {
-//       T.push(s[s.length - 1 - i], s[i]);
-//     }
-//   }
-//   return T;
+//
 // }
 
 // console.log([1, 2, 3, 4, 5, 6]);

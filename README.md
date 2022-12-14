@@ -258,7 +258,6 @@ console.log(calсulateAverage(27, 43, 2, 8, 36)); // 23.2
 # Codewars
 
 1. [Kata Series](https://www.codewars.com/kata/572ab0cfa3af384df7000ff8)
-1. [Kata](https://www.codewars.com/kata/55a1528cca4a6d4c5a0000e3/train/javascript)
 1. [Kata](https://www.codewars.com/kata/5983cba828b2f1fd55000114)
 1. [Kata](https://www.codewars.com/kata/5848565e273af816fb000449)
 1. [Kata](https://www.codewars.com/kata/581e014b55f2c52bb00000f8)
