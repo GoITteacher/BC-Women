@@ -81,9 +81,10 @@ const cars = [
   },
 ];
 
-// ==========================
+// ======================================================
+// Пусть функция `getModels` возвращает массив моделей (поле model) всех автомобилей.
 
-// ==========================
+// ======================================================
 
 /* 
 Пусть функция makeCarsWithDiscount возвращает новый массив объектов с изменным значением свойства price в зависимости от переданной скидки.
@@ -93,7 +94,7 @@ const cars = [
 // console.log(makeCarsWithDiscount(cars, 0.2));
 // console.log(makeCarsWithDiscount(cars, 0.4));
 
-// =============================
+// ======================================================
 
 /* 
 Пусть функция filterByPrice возвращает массив автомобилей цена которых меньше чем значение параметра threshold.
@@ -103,7 +104,7 @@ const cars = [
 // console.table(filterByPrice(cars, 25000));
 // console.table(filterByPrice(cars, 23000));
 
-// =========================
+// ======================================================
 
 /* 
 Пусть функция `getCarsWithDiscount` возвращает массив автомобилей свойство
@@ -112,7 +113,7 @@ onSale которых true.
 
 // console.log(getCarsWithDiscount(cars));
 
-// ============================
+// ======================================================
 
 /* Пусть функция `getCarsWithType` возвращает массив автомобилей тип которых
 совпадает со значением параметра `type`. */
@@ -120,20 +121,20 @@ onSale которых true.
 // console.log(getCarsWithType(cars, 'suv'));
 // console.log(getCarsWithType(cars, 'sedan'));
 
-// ========================
+// ======================================================
 //getCarByModel
 
 // console.log(getCarByModel(cars, 'F-150'));
 // console.log(getCarByModel(cars, 'CX-9'));
 
-// =====================
+// ======================================================
 
 /* Пусть функция `sortByAscendingAmount` возвращает новый массив автомобилей
 отсортированный по возврастанию значения свойства `amount`. */
 
 // console.table(sortByAscendingAmount(cars));
 
-// =================
+// ======================================================
 
 /*
 Пусть функция `sortByDescendingPrice` возвращает новый массив автомобилей
@@ -142,7 +143,7 @@ onSale которых true.
 
 // console.table(sortByDescendingPrice(cars));
 
-// =====================
+// ======================================================
 
 /* Пусть функция `sortByModel` возвращает новый массив автомобилей отсортированный
 по названию модели в алфавитном и обратном алфавитном порядке, в засисимости от
@@ -151,44 +152,41 @@ onSale которых true.
 // console.table(sortByModel(cars, 'asc'));
 // console.table(sortByModel(cars, 'desc'));
 
-// =================
+// ======================================================
 /* Пусть функция `getTotalAmount` возвращает общее количество автомобилей(значение
 свойств `amount`). */
 
 // console.log(getTotalAmount(cars));
 
-// ===========================
+// ======================================================
 
 /* Пусть функция `getAvailableCarNames` возвращает массив моделей автомобилей, но
 только тех, которые сейчас на распродаже. */
 
-// const getModelsOnSale1 = cars => {
-//   return cars.filter(el => el.onSale === true).map(el => el.model);
-// };
+// console.table(getAvailableCarNames(cars));
 
-// const getModelsOnSale2 = cars => {
-//   return cars.map(el => el.model).filter(el => el.onSale === true);
-// };
-
-// const getModelsOnSale3 = cars => {
-//   return cars.reduce((acc, car) => {
-//     if (car.onSale) {
-//       acc.push(car.model);
-//     }
-//     return acc;
-//   }, []);
-// };
-
-// console.table(getModelsOnSale3(cars));
-
-// ===========================
+// ======================================================
 /* 
 Пусть функция `getSortedCarsOnSale` возвращает массив автомобилей на распродаже
 (свойство onSale), отсортированных по возрастанию цены. */
 
 // console.table(getSortedCarsOnSale(cars));
 
-/// ========================
+// ======================================================
+
+// https://www.codewars.com/kata/5983cba828b2f1fd55000114
+
+// https://www.codewars.com/kata/59df2f8f08c6cec835000012
+
+// https://www.codewars.com/kata/5783ef69202c0ee4cb000265
+
+// https://www.codewars.com/kata/60cc93db4ab0ae0026761232
+
+// https://www.codewars.com/kata/513e08acc600c94f01000001
+
+// https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec
+
+// ======================================================
 
 // function encryptThis(text) {
 //   return text.split(' ').map(encryptWord);
@@ -200,7 +198,7 @@ onSale которых true.
 
 // encryptThis('Hello Wolrd');
 
-// ============================
+// ======================================================
 
 // function decipherThis(str) {
 //   return str.split(' ').map(decodeWord).join(' ');
@@ -210,3 +208,4 @@ onSale которых true.
 // }
 
 // console.log(decodeWord('72olle'));
+// ======================================================
