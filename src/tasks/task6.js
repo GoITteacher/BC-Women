@@ -1,12 +1,10 @@
 let user1 = {
   name: 'Petya',
-  setName() {
-    this.name = name;
+  setName(name) {
     console.log(this);
+    this.name = name;
   },
 };
-
-user1.setName();
 
 let user2 = {
   name: 'Vasya',

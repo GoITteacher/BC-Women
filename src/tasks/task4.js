@@ -18,20 +18,20 @@
 
 // ======================
 
-// function f() {
-//   console.log(this);
-//   function foo() {
-//     console.log(this);
-//   }
-//   return foo;
-// }
+function f() {
+  function foo() {
+    console.log(this);
+  }
+  return foo;
+}
 
-// const obj = {
-//   name: 'obj',
-// };
-// let obj1 = {
-//   name: 'OBJ1',
-//   foo1: f.call(obj).bind(window),
-// };
+const obj = {
+  name: 'obj',
+};
 
-// obj1.foo1();
+let obj1 = {
+  name: 'OBJ1',
+  foo1: f.call(obj).bind(window),
+};
+
+obj1.foo1();

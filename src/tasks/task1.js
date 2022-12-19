@@ -1,5 +1,5 @@
 // let elem = {
-//   value: '123',
+//   value: 'elem',
 // };
 
 // function func(a, b) {
@@ -11,7 +11,6 @@
 // }
 
 // func.call(elem);
-// func();
 // =======================
 
 let elem = {
@@ -20,9 +19,11 @@ let elem = {
 
 function func(a, b) {
   const arrow = (a, b) => {
-    (() => {
+    const test = () => {
       console.log(this);
-    })();
+    };
+
+    test();
   };
 
   arrow();
