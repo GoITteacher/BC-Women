@@ -18,7 +18,7 @@
 количество постов которые нужно добавить пользователю.
 
 ```js
-const mango = new User({
+const mango = new Blogger({
   name: 'mango@mail.com',
   age: 24,
   numberOfPosts: 20,
@@ -28,7 +28,7 @@ console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 20 
 mango.updatePostCount(5);
 console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
 
-const poly = new User({
+const poly = new Blogger({
   name: 'poly@mail.com',
   age: 19,
   numberOfPosts: 17,
@@ -50,6 +50,7 @@ console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 21 po
 - `getItems()` - возвращает массив товаров.
 - `addItem(item)` - получает новый товар и добавляет его к текущим.
 - `removeItem(item)` - получает товар и, если он есть, удаляет его из текущих.
+- `hasItem(item)`
 
 ```js
 const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
