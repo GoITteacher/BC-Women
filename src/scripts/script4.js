@@ -623,3 +623,23 @@ const posts = [
     body: 'quibusdam rerum quia nostrum culpa\nculpa est natus impedit quo rem voluptate quos\nrerum culpa aut ut consectetur\nsunt esse laudantium voluptatibus cupiditate rerum',
   },
 ];
+
+//===================
+
+const listComments = document.querySelector('.js-table-comments');
+
+const createMarkup = posts => {
+  return posts
+    .map(post => {
+      return `<tr>
+    <td>  Post id: ${post.postId}</td>
+    <td> ${post.name}</td>
+    <td> ${post.email}</td>
+    <td> ${post.body}</td>
+  </tr>
+  `;
+    })
+    .join('');
+};
+
+listComments.insertAdjacentHTML('afterbegin', createMarkup(posts));

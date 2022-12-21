@@ -37,3 +37,8 @@ table, th, td {
 * {
     box-sizing: border-box;
 }
+
+.li-item{
+    border-top: 1px solid tomato;
+    border-bottom: 1px solid tomato;
+}

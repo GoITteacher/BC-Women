@@ -232,3 +232,34 @@ const users = [
   },
 ];
 // ====================
+
+/* <li class="li-item">
+            <h3>NAME</h3>
+            <p>email: Email
+                Address: Country, city, street</p>
+            
+        </li> 
+*/
+
+const userListEl = document.querySelector('.js-list-users');
+
+const createMarkup = users => {
+  return users
+    .map(({ name, email, address: { city, street } }) => {
+      return `
+<li class="li-item">
+    <h3>${name}</h3>
+    <p>
+        email: ${email} <br/>
+        Address: ${city}, ${street}
+    </p>
+</li>\n`;
+    })
+    .join('\n');
+};
+
+const showUsers = () => {
+  userListEl.innerHTML = createMarkup(users);
+};
+
+showUsers();

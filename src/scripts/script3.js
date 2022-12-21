@@ -459,3 +459,42 @@ const photos = [
 ];
 
 // ========================
+
+const photoListel = document.querySelector('.js-image-list');
+
+const createMarkup = photos => {
+  return photos
+    .map(photo => {
+      const { url, title, albumId } = photo;
+      return `<img src="${url}" alt="${title}" data-id="${albumId}">`;
+    })
+    .join('');
+};
+
+const getElements = photos => {
+  return photos.map(photo => {
+    const { url, title, albumId } = photo;
+    const elem = document.createElement('img');
+    elem.src = url;
+    elem.alt = title;
+    elem.dataset.id = albumId;
+
+    return elem;
+  });
+};
+
+const showImages = () => {
+  // photoListel.insertAdjacentHTML('afterbegin', createMarkup(photos));
+  const arr = getElements(photos);
+  photoListel.append(...arr);
+};
+
+showImages();
+// ===========================
+
+const selectedImage = id => {
+  const listImages = document.querySelectorAll(`[data-id="${id}"]`);
+  listImages.forEach(image => image.classList.add('active'));
+};
+
+selectedImage(1);

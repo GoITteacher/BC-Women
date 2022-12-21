@@ -80,3 +80,26 @@ const cars = [
     onSale: false,
   },
 ];
+
+const listCars = document.querySelector('.js-table-cars > tbody');
+
+const makeCar = car => {
+  const { make, model, type, amount, price, onSale } = car;
+  return `
+<tr>
+  <td>${make}</td>
+  <td>${model}</td>
+  <td>${type}</td>
+  <td>${amount}</td>
+  <td>${price}</td>
+  <td>${onSale}</td>
+</tr>
+  `;
+};
+
+const makeCars = cars
+  .sort((b, a) => a.amount - b.amount)
+  .sort((b, a) => a.onSale - b.onSale)
+  .map(makeCar)
+  .join('');
+listCars.insertAdjacentHTML('afterbegin', makeCars);
