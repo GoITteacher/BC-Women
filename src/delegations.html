@@ -12,11 +12,17 @@
 <body>
     <div class="box fb fb-h h100">
 
-        <ul class="box list js-user-list">
-            <!-- <li class="user-item" data-id=${user.id}>
-                <h3>UserName</h3>
-            </li> -->
-        </ul>
+        <div class="box list">
+            <input type="text" class="js-users-filter">
+            <ul class="box list js-user-list">
+            
+            </ul>
+        </div>
+        
+        <form action="" class="box js-user-form">
+            <input type="text" name="user-name">
+            <button type="submit">Send</button>
+        </form>
 
         <ul class="box list js-album-list">
             <!-- <li class="album" data-id=${album.id}>
@@ -29,9 +35,9 @@
             </li> -->
         </ul>
 
-        <ul class="box list js-photo-list fb fb-v">
-            <!-- <img src="${photo.url}" alt="${photo.title}"> -->
-        </ul>
+        <div class="box list js-photo-list fb fb-v">
+            <!-- <img src="" alt=""> -->
+        </div>
 
     </div>
     
@@ -52,5 +58,6 @@
     </div>
 
     <script src="./scripts/delegations.js" type="module"></script>
+    <script src="./scripts/script.js" type="module"></script>
 </body>
 </html>
