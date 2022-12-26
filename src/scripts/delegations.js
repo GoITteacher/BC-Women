@@ -1,11 +1,13 @@
 import { users, albums, photos } from './data.js';
 
 const refs = {
+  backdrop: document.querySelector('.backdrop'),
   userListElem: document.querySelector('.js-user-list'),
   albumsListElem: document.querySelector('.js-album-list'),
   photoListEl: document.querySelector('.js-photo-list'),
   usersFilterEl: document.querySelector('.js-users-filter'),
   userFormElem: document.querySelector('.js-user-form'),
+  modalElem: document.querySelector('.modalka'),
 };
 
 // =============================================
@@ -45,10 +47,8 @@ const albumsMarkup = albums => {
 };
 
 const renderAlbums = albums => {
-  refs.albumsListElem.innerHTML = albumsMarkup(albums);
+  const filteredAlbums = (refs.albumsListElem.innerHTML = albumsMarkup(albums));
 };
-
-renderAlbums(albums);
 
 // ==============================
 
@@ -64,9 +64,7 @@ const renderPhotos = photos => {
   refs.photoListEl.innerHTML = photoMarkup(photos);
 };
 
-// renderPhotos(photos);
-
-// ==================
+// ========================================
 
 refs.usersFilterEl.addEventListener('input', event => {
   let value = event.currentTarget.value;
@@ -79,7 +77,7 @@ refs.usersFilterEl.addEventListener('input', event => {
   }
 });
 
-refs.userFormElem.addEventListener('submit', event => {
+/* refs.userFormElem.addEventListener('submit', event => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
 
@@ -95,15 +93,96 @@ refs.userFormElem.addEventListener('submit', event => {
   renderUsers(users);
 
   event.target.reset();
+}); */
 
-  const obj = {};
+// =====================================
+// DELEGATION
+// =====================================
 
-  for (let [key, value] of data.entries()) {
-    obj[key] = value;
+refs.userListElem.addEventListener('click', event => {
+  if (event.target === event.currentTarget) return;
+
+  const liElem = event.target.closest('li');
+  const id = liElem.dataset.id;
+
+  if (event.shiftKey === true) {
+    openModal(id);
+  } else {
+    let filteredAlbums = albums.filter(el => el.userId === +id);
+    renderAlbums(filteredAlbums);
   }
+});
 
-  // const userData = {};
-  // for (const [key, value] of data.entries()) {
-  //   userData[key] = value;
-  // }
+// =======================================
+refs.albumsListElem.addEventListener('click', event => {
+  if (event.target === event.currentTarget) return;
+
+  const liElem = event.target.closest('li');
+  const id = +liElem.dataset.id;
+
+  let filteredPhoto = photos.filter(el => el.albumId === id);
+
+  renderPhotos(filteredPhoto);
+});
+
+//========================
+
+// MODAL
+
+function openModal(id) {
+  const user = users.find(user => user.id === +id);
+  renderModal(user);
+  document.body.classList.add('show-modal');
+  document.addEventListener('keydown', onCloseModal);
+}
+
+function createModalMarkup(use) {
+  let user = users[0];
+  return `
+<div class="modalka">
+    <h2>${user.name}</h2>
+    <hr>
+    - <span>${user.email}</span><br>
+    - <span>${user.phone}</span><br>
+    - <a href="awda">${user.website}</a>
+    <hr>
+    Adress: ${Object.values(user.address).slice(0, -1).join(', ')}
+    <hr>
+    Company: ${Object.values(user.company).join(', ')}
+    <hr>
+</div>
+`;
+}
+
+function renderModal(user) {
+  refs.modalElem.innerHTML = createModalMarkup(user);
+}
+
+/* 
+        <div class="modalka">
+            <h2>name</h2>
+            <hr>
+            - <span>email</span><br>
+            - <span>phone</span><br>
+            - <a href="awda">website</a>
+            <hr>
+            Adress: awdawdawd
+            <hr>
+            Company: awdawdawdawd
+            <hr>
+        </div>
+*/
+
+function onCloseModal(event) {
+  if (event.code === 'Escape') {
+    document.body.classList.remove('show-modal');
+    document.removeEventListener('keydown', onCloseModal);
+  }
+}
+
+refs.backdrop.addEventListener('click', event => {
+  if (event.target === event.currentTarget) {
+    document.body.classList.remove('show-modal');
+    document.removeEventListener('keydown', onCloseModal);
+  }
 });
