@@ -96,6 +96,12 @@ refs.userFormElem.addEventListener('submit', event => {
 
   event.target.reset();
 
+  const obj = {};
+
+  for (let [key, value] of data.entries()) {
+    obj[key] = value;
+  }
+
   // const userData = {};
   // for (const [key, value] of data.entries()) {
   //   userData[key] = value;
