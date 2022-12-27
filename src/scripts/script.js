@@ -1,4 +1,4 @@
-// function fn(buyers, cases) {
+/* // function fn(buyers, cases) {
 //   const objCases = {};
 //   for (let i = 0; i < cases; i++) {
 //     objCases[i] = 0;
@@ -36,3 +36,4 @@ console.log(fn([12, 3, 5, 6, 2, 15, 7], 2));
 
 // 1=12
 //
+ */

@@ -55,7 +55,8 @@ const renderAlbums = albums => {
 const photoMarkup = photos => {
   return photos
     .map(photo => {
-      return `<img src="${photo.thumbnailUrl}" alt="${photo.title}">`;
+      //
+      return `<img loading="lazy" class="lazyload" src="lqip-src.jpg" data-src="${photo.url}" alt="${photo.title}">`;
     })
     .join('');
 };
@@ -66,8 +67,9 @@ const renderPhotos = photos => {
 
 // ========================================
 
-refs.usersFilterEl.addEventListener('input', event => {
-  let value = event.currentTarget.value;
+const onFilterUsers = event => {
+  console.log('DEBOUNCE');
+  let value = event.target.value;
   const filteredUser = users.filter(elem => elem.name.includes(value));
 
   if (filteredUser.length === 0) {
@@ -75,7 +77,9 @@ refs.usersFilterEl.addEventListener('input', event => {
   } else {
     renderUsers(filteredUser);
   }
-});
+};
+
+refs.usersFilterEl.addEventListener('input', _.debounce(onFilterUsers, 1000));
 
 /* refs.userFormElem.addEventListener('submit', event => {
   event.preventDefault();
