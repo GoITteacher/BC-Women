@@ -13,6 +13,5 @@ refs.formElem.addEventListener('submit', event => {
     newUser[key] = value;
   }
 
-  console.log(newUser);
   event.target.reset();
 });
