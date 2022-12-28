@@ -1,4 +1,5 @@
 import { users, albums, photos } from './data.js';
+import { debounce } from 'lodash';
 
 const refs = {
   backdrop: document.querySelector('.backdrop'),
@@ -10,7 +11,6 @@ const refs = {
   modalElem: document.querySelector('.modalka'),
 };
 
-// =============================================
 const userMarkup = user => {
   return `
 <li class="user-item" data-id=${user.id}>
@@ -27,7 +27,6 @@ const renderUsers = users => {
 };
 
 renderUsers(users);
-// =============================================
 
 const albumsMarkup = albums => {
   return albums
@@ -50,8 +49,6 @@ const renderAlbums = albums => {
   const filteredAlbums = (refs.albumsListElem.innerHTML = albumsMarkup(albums));
 };
 
-// ==============================
-
 const photoMarkup = photos => {
   return photos
     .map(photo => {
@@ -65,8 +62,6 @@ const renderPhotos = photos => {
   refs.photoListEl.innerHTML = photoMarkup(photos);
 };
 
-// ========================================
-
 const onFilterUsers = event => {
   console.log('DEBOUNCE');
   let value = event.target.value;
@@ -79,7 +74,7 @@ const onFilterUsers = event => {
   }
 };
 
-refs.usersFilterEl.addEventListener('input', _.debounce(onFilterUsers, 1000));
+refs.usersFilterEl.addEventListener('input', debounce(onFilterUsers, 1000));
 
 /* refs.userFormElem.addEventListener('submit', event => {
   event.preventDefault();
@@ -99,10 +94,6 @@ refs.usersFilterEl.addEventListener('input', _.debounce(onFilterUsers, 1000));
   event.target.reset();
 }); */
 
-// =====================================
-// DELEGATION
-// =====================================
-
 refs.userListElem.addEventListener('click', event => {
   if (event.target === event.currentTarget) return;
 
@@ -117,7 +108,6 @@ refs.userListElem.addEventListener('click', event => {
   }
 });
 
-// =======================================
 refs.albumsListElem.addEventListener('click', event => {
   if (event.target === event.currentTarget) return;
 
@@ -128,10 +118,6 @@ refs.albumsListElem.addEventListener('click', event => {
 
   renderPhotos(filteredPhoto);
 });
-
-//========================
-
-// MODAL
 
 function openModal(id) {
   const user = users.find(user => user.id === +id);
