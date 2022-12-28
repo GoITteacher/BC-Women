@@ -140,8 +140,7 @@ function openModal(id) {
   document.addEventListener('keydown', onCloseModal);
 }
 
-function createModalMarkup(use) {
-  let user = users[0];
+function createModalMarkup(user) {
   return `
 <div class="modalka">
     <h2>${user.name}</h2>
