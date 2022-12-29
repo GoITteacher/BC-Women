@@ -129,3 +129,16 @@ li{
     margin-top:10px;
     margin-bottom:10px;
 }
+
+.history-list{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.withdraw{
+    color: rgb(255, 42, 0);
+}
+
+.deposit{
+    color:rgb(7, 109, 0)
+}

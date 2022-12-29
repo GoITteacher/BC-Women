@@ -25,4 +25,9 @@ export class Bank {
 
     this.historyTransaction.push(transaction);
   }
+
+  setData({ balance = 0, historyTransaction = [] } = {}) {
+    this.balance = balance;
+    this.historyTransaction = historyTransaction;
+  }
 }
