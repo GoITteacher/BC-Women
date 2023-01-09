@@ -1,23 +1,20 @@
+import { Stopwatch } from './modules/stopWatch';
+
 const refs = {
-  startBtn: document.querySelector('button[data-action-start]'),
-  stopBtn: document.querySelector('button[data-action-stop]'),
-  clockface: document.querySelector('.js-clockface'),
+  startBtn: document.querySelector('[data-action-start]'),
+  stopBtn: document.querySelector('[data-action-stop]'),
+  timerEl: document.querySelector('.js-clockface'),
 };
 
-class Stopwatch {}
+const stopwatch = new Stopwatch(tick);
 
-/* 
-getTimeComponents(time) {
-    const hours = this.pad(
-      Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-    );
-    const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-    const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
+function tick(time) {
+  refs.timerEl.textContent = time;
+}
 
-    return { hours, mins, secs };
-  }
-  pad(value) {
-    return String(value).padStart(2, '0');
-  }
-
-*/
+refs.startBtn.addEventListener('click', () => {
+  stopwatch.start();
+});
+refs.stopBtn.addEventListener('click', () => {
+  stopwatch.stop();
+});
