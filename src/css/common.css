@@ -90,3 +90,15 @@ img {
 .timer-btn.is-active {
   background-color: #2196f3;
 }
+
+
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  flex-direction: column;
+  width: fit-content;
+}
