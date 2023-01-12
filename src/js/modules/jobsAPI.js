@@ -9,10 +9,4 @@ const options = {
   },
 };
 
-export class JobsApi {
-  constructor() {}
-
-  getJobs(url = BASE_URL) {
-    return fetch(url, options).then(response => response.json());
-  }
-}
+export class JobsApi {}
