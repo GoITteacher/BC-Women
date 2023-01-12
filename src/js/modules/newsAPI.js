@@ -8,4 +8,24 @@ const options = {
   },
 };
 
-export class NewsApi {}
+export class NewsApi {
+  page = 1;
+  query = ''; // ELON MUSK
+
+  getNews(query) {
+    if (query) {
+      this.query = query;
+    }
+
+    const params = new URLSearchParams({
+      q: this.query,
+      lang: 'en',
+      page: this.page,
+      page_size: 25,
+    });
+
+    return fetch(`${BASE_URL}${END_POINT}?${params}`, options).then(response =>
+      response.json(),
+    );
+  }
+}

@@ -28,4 +28,5 @@
     "axios": "^1.2.0",
     "parcel-transformer-hbs": "^1.0.4"
   }
+  
 }
