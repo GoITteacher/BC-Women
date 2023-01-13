@@ -8,16 +8,28 @@ refs.formEl.addEventListener('submit', e => {
   const delay = e.target.elements.delay.value;
   const count = e.target.elements.count.value;
   const interval = e.target.elements.interval.value;
-
+  let intervalId;
+  let counter = 1;
   setTimeout(() => {
-    for (let i = 0; i < count; i++) {
-      setTimeout(callback, interval * i, interval * i + +delay);
-    }
-  }, delay);
+    intervalId = setInterval(() => {
+      const promise = createPromise(counter, +delay + interval * counter);
+      promise.then(callback);
 
-  console.log(delay, count, interval);
+      if (+counter === +count) {
+        clearInterval(intervalId);
+      }
+
+      counter++;
+    }, interval);
+  }, delay);
 });
 
 function callback(data) {
   console.log(data);
+}
+
+function createPromise(id, delay) {
+  return new Promise((resolve, reject) => {
+    resolve(`${id}, ${delay}`);
+  });
 }
