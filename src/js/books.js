@@ -29,14 +29,70 @@ refs.createFormElem.addEventListener('submit', e => {
   };
 
   booksAPI.createBook(book).then(({ data: newBook }) => {
-    const markup = `<li data-id="${newBook.id}" class="card articles">
-    - ${newBook.title}<br>
-    - ${newBook.author}<br>
-    - ${newBook.desc}
-    </li>
-    `;
+    const markup = bookTemplate(newBook);
     refs.bookListElem.insertAdjacentHTML('beforeend', markup);
   });
 
   e.target.reset();
 });
+
+refs.updateFormElem.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const book = {};
+
+  for (let [key, value] of data.entries()) {
+    key = key.replace('book', '').toLowerCase();
+    if (value.trim() !== '') book[key] = value;
+  }
+
+  booksAPI.updateBook(book, book.id).then(({ data: book }) => {
+    const oldBookElem = refs.bookListElem.querySelector(
+      `[data-id = "${book.id}"]`,
+    );
+    oldBookElem.insertAdjacentHTML('afterend', bookTemplate(book));
+    oldBookElem.remove();
+  });
+});
+
+refs.resetFormElem.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const book = {};
+
+  for (let [key, value] of data.entries()) {
+    key = key.replace('book', '').toLowerCase();
+    book[key] = value;
+  }
+
+  booksAPI.resetBook(book, book.id).then(({ data: book }) => {
+    const oldBookElem = refs.bookListElem.querySelector(
+      `[data-id = "${book.id}"]`,
+    );
+    oldBookElem.insertAdjacentHTML('afterend', bookTemplate(book));
+    oldBookElem.remove();
+  });
+
+  e.target.reset();
+});
+
+refs.deleteFormElem.addEventListener('submit', e => {
+  e.preventDefault();
+  const id = e.target.elements.bookId.value;
+
+  booksAPI.deleteBook(id).then(() => {
+    const oldBook = refs.bookListElem.querySelector(`[data-id = "${id}"]`);
+    oldBook.remove();
+  });
+
+  e.target.reset();
+});
+
+function bookTemplate(book) {
+  return `<li data-id="${book.id}" class="card articles">
+  - ${book.title}<br>
+  - ${book.author}<br>
+  - ${book.desc}
+  </li>
+  `;
+}
