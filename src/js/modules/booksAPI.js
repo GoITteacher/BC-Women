@@ -5,19 +5,28 @@ const axios2 = axios.create({
 });
 
 export class BooksAPI {
-  getBooks() {
-    return axios2.get('/books').then(response => response.data);
+  async getBooks() {
+    try {
+      const response = await axios2.get('/books');
+      return response.data;
+    } catch {
+      return [];
+    }
   }
-  createBook(book) {
-    return axios2.post('/books', book);
+
+  async createBook(book) {
+    const response = await axios2.post('/books', book);
+    return response.data;
   }
-  updateBook(book, id) {
-    return axios2.patch(`/books/${id}`, book);
+  async updateBook(book, id) {
+    const response = await axios2.patch(`/books/${id}`, book);
+    return response.data;
   }
-  resetBook(book, id) {
-    return axios2.put(`/books/${id}`, book);
+  async resetBook(book, id) {
+    const response = await axios2.put(`/books/${id}`, book);
+    return response.data;
   }
-  deleteBook(id) {
+  async deleteBook(id) {
     return axios2.delete(`/books/${id}`);
   }
 }

@@ -21,47 +21,47 @@
             <div class="form-group">
               Phone: <input type="text" name="userPhone">
             </div>
-            <div class="form-group">
-              Name: <input type="text" name="userName">
-            </div>
       
-            <button type="submit" class="btn btn-primary">Искать</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
 
         <form class="card form-inline search-form js-update-form">
           <div class="form-group">
-            Name: <input type="text" name="userName">
+            ID: <input type="text" name="userId">
           </div>
           <div class="form-group">
             Name: <input type="text" name="userName">
           </div>
           <div class="form-group">
-            Name: <input type="text" name="userName">
+            Phone: <input type="text" name="userPhone">
           </div>
     
-          <button type="submit" class="btn btn-primary">Искать</button>
+          <button type="submit" class="btn btn-primary">Update</button>
       </form>
 
-      <form class="card form-inline search-form js-update-form">
+      <form class="card form-inline search-form js-reset-form">
         <div class="form-group">
-          Name: <input type="text" name="userName">
+          ID: <input type="text" name="userId">
         </div>
         <div class="form-group">
           Name: <input type="text" name="userName">
         </div>
         <div class="form-group">
-          Name: <input type="text" name="userName">
+          Phone: <input type="text" name="userPhone">
         </div>
   
-        <button type="submit" class="btn btn-primary">Искать</button>
+        <button type="submit" class="btn btn-primary">Reset</button>
     </form>
       
           <div class="js-card-container"></div>
     </div>
 
-    <div class="news-list js-articl-list">
-  
-    </div>
+    <ul class="news-list js-users-list">
+      <li data-id="1" class="card articles">
+        <h4>name</h4>
+        <span>phone</span>
+      </li>
+    </ul>
     
     <button disabled
       type="button"
