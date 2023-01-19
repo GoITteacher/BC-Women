@@ -65,7 +65,6 @@ refs.updateUserForm.addEventListener('submit', async e => {
 
   const updatedUser = await usersAPI.updateUser(user, user.id);
   const userMarkup = userTemplate(updatedUser);
-  ('#${aswd}');
   const oldUser = refs.userListElem.querySelector(`[data-id="${user.id}"]`);
   oldUser.insertAdjacentHTML('afterend', userMarkup);
   oldUser.remove();
